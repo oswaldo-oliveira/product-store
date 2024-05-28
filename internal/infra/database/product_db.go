@@ -31,10 +31,10 @@ func (p *Product) Update(product *entities.Product) error {
 	return p.DB.Save(product).Error
 }
 
-func (p *Product) Delete(product *entities.Product) error {
-	_, err := p.FindByID(product.ID.String())
+func (p *Product) Delete(id string) error {
+	_, err := p.FindByID(id)
 	if err != nil {
 		return err
 	}
-	return p.DB.Delete(product).Error
+	return p.DB.Delete(id).Error
 }
