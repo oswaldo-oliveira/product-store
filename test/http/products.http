@@ -1,0 +1,16 @@
+@baseurl = http://localhost:8000
+
+# @name create_product
+POST {{baseurl}}/products
+Content-Type: application/json
+
+{
+  "name": "PlayStation 5",
+  "price": 1000
+}
+
+###
+
+# @name get_products
+GET {{baseurl}}/products
+Content-Type: application/json
