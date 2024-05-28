@@ -28,10 +28,20 @@ func (p *Product) FindByID(id string) (*entities.Product, error) {
 	return nil, errors.New("Product not found")
 }
 
+func (p *Product) FindAll(page, limit int, sort string) ([]entities.Product, error) {
+	if sort != "" && sort != "asc" && sort != "desc" {
+		sort = "asc"
+	}
+	if page != 0 && limit != 0 {
+		return p.DB[page*limit : page*limit+limit], nil
+	}
+	return p.DB, nil
+}
+
 func (p *Product) Update(product *entities.Product) error {
-	for _, prod := range p.DB {
+	for index, prod := range p.DB {
 		if prod.ID == product.ID {
-			prod = *product
+			p.DB[index] = *product
 			return nil
 		}
 	}
