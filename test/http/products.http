@@ -25,10 +25,16 @@ Content-Type: application/json
 ###
 
 # @name update_product
-GET {{baseurl}}/products/{{product_id}}
+PUT {{baseurl}}/products/{{product_id}}
 Content-Type: application/json
 
 {
   "name": "PlayStation 2",
   "price": 100
 }
+
+###
+
+# @name delete_product
+DELETE {{baseurl}}/products/{{product_id}}
+Content-Type: application/json
