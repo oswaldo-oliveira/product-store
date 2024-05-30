@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"github.com/oswaldo-oliveira/productstore/configs"
 	"github.com/oswaldo-oliveira/productstore/internal/entities"
 	"github.com/oswaldo-oliveira/productstore/internal/infra/database"
@@ -26,6 +28,11 @@ func main() {
 	productDB := database.NewProduct(db)
 	productHandler := handlers.NewProductHandler(productDB)
 
-	http.HandleFunc("/products", productHandler.CreateProduct)
-	http.ListenAndServe(":8000", nil)
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+	r.Use(middleware.Heartbeat("/ping"))
+	r.Post("/products", productHandler.CreateProduct)
+	r.Get("/products/{id}", productHandler.GetProduct)
+
+	http.ListenAndServe(":8000", r)
 }
