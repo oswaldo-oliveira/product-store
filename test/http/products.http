@@ -1,13 +1,13 @@
 @baseurl = http://localhost:8000
-@product_id = 68c9e51d-7e61-46f8-adae-3231ea39dc82
+@product_id = 263d791e-8373-48a1-ae2b-0654c5605c6f
 
 # @name create_product
 POST {{baseurl}}/products
 Content-Type: application/json
 
 {
-  "name": "PlayStation 5",
-  "price": 1000
+  "name": "Xbox One",
+  "price": 3000
 }
 
 ###
@@ -37,4 +37,10 @@ Content-Type: application/json
 
 # @name delete_product
 DELETE {{baseurl}}/products/{{product_id}}
+Content-Type: application/json
+
+###
+
+# @name ping
+GET {{baseurl}}/ping
 Content-Type: application/json
