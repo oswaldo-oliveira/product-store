@@ -1,4 +1,5 @@
 @baseurl = http://localhost:8000
+@product_id = 143214321
 
 # @name create_product
 POST {{baseurl}}/products
@@ -13,4 +14,10 @@ Content-Type: application/json
 
 # @name get_products
 GET {{baseurl}}/products
+Content-Type: application/json
+
+###
+
+# @name get_product_by_id
+GET {{baseurl}}/products/{{product_id}}
 Content-Type: application/json
