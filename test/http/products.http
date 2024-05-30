@@ -1,5 +1,5 @@
 @baseurl = http://localhost:8000
-@product_id = 143214321
+@product_id = 68c9e51d-7e61-46f8-adae-3231ea39dc82
 
 # @name create_product
 POST {{baseurl}}/products
@@ -21,3 +21,14 @@ Content-Type: application/json
 # @name get_product_by_id
 GET {{baseurl}}/products/{{product_id}}
 Content-Type: application/json
+
+###
+
+# @name update_product
+GET {{baseurl}}/products/{{product_id}}
+Content-Type: application/json
+
+{
+  "name": "PlayStation 2",
+  "price": 100
+}
