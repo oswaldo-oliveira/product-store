@@ -1,0 +1,12 @@
+@baseurl = http://localhost:8000
+@user_id = 263d791e-8373-48a1-ae2b-0654c5605c6f
+
+# @name create_user
+POST {{baseurl}}/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@email.com",
+  "password": "123456"
+}
