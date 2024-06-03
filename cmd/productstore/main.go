@@ -23,10 +23,12 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	db.AutoMigrate(&entities.Product{}, &entities.User{})
 
+	db.AutoMigrate(&entities.Product{}, &entities.User{})
 	productDB := database.NewProduct(db)
+	userDB := database.NewUser(db)
 	productHandler := handlers.NewProductHandler(productDB)
+	usersHandler := handlers.NewUserHandler(userDB)
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
@@ -36,6 +38,8 @@ func main() {
 	r.Get("/products", productHandler.GetProducts)
 	r.Put("/products/{id}", productHandler.UpdateProduct)
 	r.Delete("/products/{id}", productHandler.DeleteProduct)
+
+	r.Post("/users", usersHandler.CreateUser)
 
 	http.ListenAndServe(":8000", r)
 }
