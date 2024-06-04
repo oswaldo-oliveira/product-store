@@ -1,5 +1,6 @@
 @baseurl = http://localhost:8000
 @product_id = 263d791e-8373-48a1-ae2b-0654c5605c6f
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTc0NjI2MzksInN1YiI6IjJhMWY4NmY1LWU1MzYtNDdlZS1hYzQ0LTE3NGYwMTQ3OThkMSJ9.hIr_ObEPkaLa1sdLspcneGXJ3gjTvYHZsWyglq0jxuI
 
 # @name create_product
 POST {{baseurl}}/products
@@ -15,6 +16,7 @@ Content-Type: application/json
 # @name get_products
 GET {{baseurl}}/products
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ###
 
